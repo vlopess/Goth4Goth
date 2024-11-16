@@ -1,0 +1,22 @@
+.options{
+    display: flex;
+}
+
+.selected{
+    border: 5px solid #62188b;
+}
+
+.option:hover{
+    transform: scale(1.03);
+}
+
+.option{
+    background-color: #ffffff20;
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 0 0.9rem;
+}
+
+.option img {
+    width: 100%;
+}

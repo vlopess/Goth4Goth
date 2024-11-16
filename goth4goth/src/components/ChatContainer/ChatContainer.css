@@ -1,0 +1,141 @@
+
+.container-chat {
+    width: 100%;
+    background-color: #343541;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar {
+    background-color: #343541;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar a {
+    color: #6B6C7B;
+    white-space: nowrap;
+    margin-left: 10px;
+    user-select: none;
+}
+
+.close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.line {
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background-color: #6B6C7B;
+    border-radius: 30px;
+}
+
+.line.one {
+    transform: rotate(45deg)
+}
+
+.line.two {
+    transform: rotate(135deg)
+}
+
+.messages-area {
+    background-color: #40414F;
+    width: 100%;
+    height: 400px;
+    overflow: scroll;
+
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px;
+    word-wrap: break-word;
+    display: flex;
+    margin: 10px;
+}
+
+
+.other {
+    text-align: start;
+    align-self: start;
+    border-radius: 0 8px 8px 0;
+    background-color: rgba(98, 24, 139, 1);
+}
+
+.me{
+    text-align: end;
+    align-self: end;
+    border-radius: 8px 0 0 8px;
+    background-color: #343541;
+}
+
+.sender-area {
+    background-color: #343541;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    border-radius: 8px;
+    padding: 0 10px;
+}
+
+.send-img {
+    width: 30px;
+}
+
+.send-input {
+    outline: none;
+    display: flex;
+    border: none;
+    background: none;
+    height: 40px;
+    width: 95%;
+    border-radius: 7px;
+    color: white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 5px;
+}
+
+.send-input::placeholder {
+    color: #828E9E;
+}
+
+.input-place {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    align-items: center;
+    background-color: #40414F;
+    border-radius: 7px;
+    height: 40px;
+    gap: 5px;
+    border: 1px solid #2E2F3A;
+}
+
+.send {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.send-icon {
+    width: 17px;
+}
