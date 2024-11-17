@@ -79,7 +79,7 @@ O objetivo do **Goth4Goth** é criar um espaço esteticamente único para pessoa
 
 ![Captura de tela de 2024-11-16 10-46-54](https://github.com/user-attachments/assets/a9bc0754-b6b3-42d6-8bc5-3cfb712c4049)
 
-![Gostou? Então acesse!](https://aesthetic-arithmetic-6dfd2d.netlify.app/goth4goth)
+[Gostou? Então acesse!](https://aesthetic-arithmetic-6dfd2d.netlify.app/goth4goth)
 
 ## 🛠️ Estrutura do Projeto
 
