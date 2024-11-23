@@ -19,7 +19,25 @@ export const SearchUsersContainer = () => {
             let newData = await fetcherService.getRoomAvailable();
             setListUsers(newData);
         }
+        const handlePopState = (event) => {
+            showSwal().then(async (result)=>{
+                if(result.isConfirmed){
+                    await fetcherService.deleteCurrentUser();
+                    localStorage.setItem('userID', null);
+                    navigate(-1);
+                    return;
+                }
+                window.history.pushState(null, null, window.location.pathname);
+            });
+        };
+
+        window.history.pushState(null, null, window.location.pathname);
+
+        window.addEventListener("popstate", handlePopState);
         fetchData();
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
     }, []);
 
 

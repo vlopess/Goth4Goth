@@ -19,18 +19,37 @@ export const ChatContainer = () => {
 
 
     useEffect(() => {
+
         const unsubscribe = fetcherService.listen(location.state.room.id, setMessages, setRoom);
-        return () => unsubscribe();
+        const handlePopState = (event) => {
+            showSwal().then(async (result)=>{
+                if(result.isConfirmed){
+                    if(location.state.room.creator !== undefined && location.state.room.creator.id === userID) await fetcherService.deleteRoom(location.state.room.id);
+                    else await fetcherService.exitRoom(location.state.room.id);
+                    navigate(-1);
+                    return;
+                }
+                window.history.pushState(null, null, window.location.pathname);
+            });
+        };
+
+        window.history.pushState(null, null, window.location.pathname);
+
+        window.addEventListener("popstate", handlePopState);
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+            unsubscribe();
+        };
     }, []);
 
     const sendMessage = async () => {
+        if(!textedMessage) return;
         try {
             let message = {
                 'text' : textedMessage,
                 'user' : await fetcherService.getCurrentUser(),
                 'createdAt' : Timestamp.now()
             }
-            console.log(message);
             await fetcherService.addMessage(location.state.room.id, message);
             setTextedMessage("");
             dummy.current.scrollIntoView({ behavior: 'smooth'});
