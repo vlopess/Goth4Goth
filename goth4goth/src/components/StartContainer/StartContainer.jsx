@@ -15,7 +15,6 @@ export const StartContainer = () => {
     useEffect(() => {
         async function fetchData() {
             let newData = await fetcherService.getCurrentUsersOnline();
-            console.log(newData.length)
             setQtd(newData.length);
         }
         fetchData();

@@ -13,7 +13,6 @@ export const ChatItemList = ({data}) => {
         <>
             <div className="chat-item-list" onClick={async () => {
                 let room = await fetcherService.enterRoom(data.id);
-                console.log(room);
                 navigate("/goth4goth/home", {state: {room: room}})
             }}>
                 <img src={escolherAvatar(data.creator.user.avatar)} className="img"/>
