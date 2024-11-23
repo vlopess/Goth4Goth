@@ -15,7 +15,6 @@ import {
 } from "firebase/firestore";
 import {db} from "../App.jsx";
 
-const userID = localStorage.getItem('userID');
 
 
 export class FetcherService {
@@ -34,7 +33,7 @@ export class FetcherService {
                 setRoom(roomData);
             }
         }, (err) => {
-            console.log(err);
+            console.error(err);
         });
     }
     async createUser(user){
@@ -45,6 +44,8 @@ export class FetcherService {
     }
 
     async getRoomAvailable(){
+        const userID = localStorage.getItem('userID');
+
         const roomsQuery = query(
             collection(db, "room"),
             where("guest", "==", null)
@@ -65,7 +66,9 @@ export class FetcherService {
     }
 
     async getCurrentUser(){
+        const userID = localStorage.getItem('userID');
         let roomSnapshot =  await this.getUser(userID);
+        console.log("getUser: " + roomSnapshot.data());
         if(!roomSnapshot.exists()) return;
         return { id: roomSnapshot.id, ...roomSnapshot.data() };
 
@@ -79,6 +82,7 @@ export class FetcherService {
         });
     }
     async deleteCurrentUser(){
+        const userID = localStorage.getItem('userID');
         const docRef = doc(db, 'user', userID)
         await deleteDoc(docRef);
     }
@@ -96,7 +100,6 @@ export class FetcherService {
     }
     async enterRoom(roomID){
         let guest = await this.getCurrentUser();
-        console.log(guest);
         const roomDocRef = doc(collection(db, 'room'), roomID);
         await updateDoc(roomDocRef, {['guest'] : guest});
         return this.getRoom(roomID);
@@ -110,6 +113,7 @@ export class FetcherService {
 
     async createRoom(){
         let creator = await this.getCurrentUser();
+        console.log("creator: " + creator);
         let room = {
             'id' : nanoid(),
             'creator' : creator,
